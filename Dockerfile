@@ -9,8 +9,15 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
+    autoconf \
+    build-essential \
+    zlib1g-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
+
+# Installer gRPC
+RUN pecl install grpc \
+    && echo "extension=grpc.so" > /usr/local/etc/php/conf.d/grpc.ini
 
 # Installer Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -25,7 +32,7 @@ WORKDIR /var/www/html
 COPY . /var/www/html/
 
 # Installer les dépendances PHP avec Composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --ignore-platform-reqs
 
 # Configurer les permissions
 RUN chown -R www-data:www-data /var/www/html \
