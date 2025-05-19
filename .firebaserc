@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "takeit-bd7e5"
+  },
+  "targets": {
+    "takeit-bd7e5": {
+      "hosting": {
+        "takeit-200": [
+          "php-docs-hello-world"
+        ]
+      }
+    }
+  }
+} 

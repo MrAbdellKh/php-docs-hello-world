@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once 'config/firebase-config.php';
+
+// Récupérer les produits depuis Firebase
+$products = $database->getReference('products')->getValue();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Korchi App - Votre Boutique en Ligne</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -49,6 +58,7 @@
         <div class="row mt-4">
             <div class="col-md-4">
                 <div class="card">
+                    <img src="images/i1.jpeg" class="card-img-top" alt="Produits Populaires">
                     <div class="card-body">
                         <h5 class="card-title">Produits Populaires</h5>
                         <p class="card-text">Découvrez nos produits les plus vendus.</p>
@@ -58,6 +68,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
+                    <img src="images/i2.jpeg" class="card-img-top" alt="Nouveautés">
                     <div class="card-body">
                         <h5 class="card-title">Nouveautés</h5>
                         <p class="card-text">Explorez nos derniers produits ajoutés.</p>
@@ -67,6 +78,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
+                    <img src="images/i3.jpeg" class="card-img-top" alt="Promotions">
                     <div class="card-body">
                         <h5 class="card-title">Promotions</h5>
                         <p class="card-text">Profitez de nos offres spéciales.</p>
@@ -92,5 +104,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="dist/bundle.js"></script>
 </body>
 </html>
