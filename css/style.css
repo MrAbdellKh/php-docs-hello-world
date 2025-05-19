@@ -1,8 +1,18 @@
+:root {
+    --primary-color: #6a1b9a;
+    --secondary-color: #ffd700;
+    --accent-color: #9c27b0;
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+}
+
 /* Styles généraux */
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
 }
 
 footer {
@@ -10,56 +20,169 @@ footer {
 }
 
 /* Styles de la navbar */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color)) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
 .navbar-brand {
     font-weight: bold;
     font-size: 1.5rem;
+    color: var(--secondary-color) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+    transform: translateY(-2px);
 }
 
 /* Styles des cartes produits */
 .card {
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 .card-img-top {
     height: 200px;
     object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-/* Styles des formulaires */
-.form-control:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+.card:hover .card-img-top {
+    transform: scale(1.1);
 }
 
-/* Styles du jumbotron */
-.jumbotron {
-    background-color: #f8f9fa;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    margin-bottom: 2rem;
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 /* Styles des boutons */
 .btn-primary {
-    padding: 0.5rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(106, 27, 154, 0.4);
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+}
+
+.btn-outline-light {
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* Styles du jumbotron */
+.jumbotron {
+    background: linear-gradient(135deg, var(--light-bg), #fff);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    animation: fadeIn 1s ease;
 }
 
 /* Styles du footer */
 footer {
-    background-color: #343a40;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: white;
-    padding: 1rem 0;
+    padding: 2rem 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Styles des formulaires */
+.form-control {
+    border-radius: 10px;
+    border: 2px solid #eee;
+    padding: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(106, 27, 154, 0.25);
+}
+
+/* Styles du panier */
+.cart-item {
+    background: white;
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Styles de la page contact */
+.contact-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease;
+}
+
+.contact-info {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
 }
 
 /* Styles responsifs */
@@ -69,6 +192,10 @@ footer {
     }
     
     .jumbotron {
-        padding: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
     }
 } 
